@@ -159,6 +159,7 @@ var VuexI18nPlugin = {};
 // internationalization plugin for vue js using vuex
 VuexI18nPlugin.install = function install(Vue, store) {
 	var moduleName = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'i18n';
+	var transFunct = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '$t';
 
 
 	// check if the plugin was correctly initialized
@@ -293,7 +294,7 @@ VuexI18nPlugin.install = function install(Vue, store) {
 	};
 
 	// register the translation function on the vue instance
-	Vue.prototype.$t = translate;
+	Vue.prototype[transFunct] = translate;
 
 	// register the specific language translation function on the vue instance
 	Vue.prototype.$tlang = translateInLanguage;
